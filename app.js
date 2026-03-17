@@ -34,7 +34,7 @@ app.post("/book", async(req,res)=>{
   })
 
   res.status(201).json({
-    message : "Book Created Successfully"
+    message : "Book Created Successfully" 
   })
 })
 
@@ -72,6 +72,33 @@ app.get("/book/:id",async(req,res)=>{
   }
   
   
+})
+//delete option
+app.delete("/book/:id",async(req,res)=>{
+  const id = req.params.id;
+  await Book.findByIdAndDelete(id);
+  
+  res.status(200).json({
+    message : "Book Delete Successfully"
+  })
+})
+
+//update book
+app.patch("/book/:id",async (req,res)=>{
+  const id = req.params.id;
+  const {bookName, bookPrice,isbrNumber, authorName , publishedAt,publisher} = req.body;
+  await Book.findByIdAndUpdate(id,{
+    bookName,
+    bookPrice,
+    isbrNumber,
+    authorName,
+    publishedAt,
+    publisher
+  });
+  
+  res.status(200).json({
+    message : "Book Updated Successfully"
+  })
 })
 
 
