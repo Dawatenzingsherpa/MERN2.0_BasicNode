@@ -86,7 +86,7 @@ app.get("/book/:id",async(req,res)=>{
 //delete option
 app.delete("/book/:id",async(req,res)=>{
   const id = req.params.id;
-  /*
+  
   const oldData = await Book.findById(id);
   
   const oldImageURL = oldData.imageURL;
@@ -99,7 +99,7 @@ app.delete("/book/:id",async(req,res)=>{
       console.log("File Deleted Successfully");
     }
   })
-  */
+  
   
   await Book.findByIdAndDelete(id);
   
