@@ -19,6 +19,9 @@ const bookSchema = new Schema({
   },
   publisher : {
     type : String
+  },
+  imageURL : {
+    type : String
   }
 
   
