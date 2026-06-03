@@ -36,7 +36,9 @@ app.post("/book",upload.single('image'), async(req,res)=>{
   }else{
     fileName = "http://localhost:3000/"+req.file.filename;
   }
-  const {bookName, bookPrice,isbrNumber, authorName , publishedAt,publisher} = req.body;
+
+
+  const {bookName, bookPrice,isbrNumber, authorName , publishedAt,publisher} = JSON.parse(req.body.book);
 
   await Book.create({
     bookName,
@@ -117,7 +119,7 @@ app.delete("/book/:id",async(req,res)=>{
 app.patch("/book/:id",upload.single('image'),async (req,res)=>{
   const id = req.params.id;
   let fileName;
-  const {bookName, bookPrice,isbrNumber, authorName , publishedAt,publisher} = req.body;
+  const {bookName, bookPrice,isbrNumber, authorName , publishedAt,publisher} = JSON.parse(req.body.book);
   const oldData = await Book.findById(id);
   if(req.file){
     const oldImageURL = oldData.imageURL;
