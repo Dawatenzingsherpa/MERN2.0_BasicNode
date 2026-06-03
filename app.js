@@ -1,5 +1,7 @@
 const express = require('express');
 const app = express();
+const cors = require('cors');
+ 
 const fs = require('fs');
 
 const connectToDatabase = require('./database');
@@ -14,6 +16,9 @@ const upload = multer({storage : storage});
 app.use(express.json())
 
 connectToDatabase();
+app.use(cors({
+  origin : "http://localhost:5173"
+})); 
 
 
 app.get("/",(req,res)=>{
