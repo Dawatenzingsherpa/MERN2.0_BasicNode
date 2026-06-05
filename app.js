@@ -15,7 +15,9 @@ const upload = multer({storage : storage});
 //const app = require("express")();
 
 app.use(express.json())
-app.use(cors());
+app.use(cors({
+  origin : "https://mern-2-0-basic-react.vercel.app"
+}));
 
 
 connectToDatabase();
