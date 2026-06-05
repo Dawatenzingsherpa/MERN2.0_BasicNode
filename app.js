@@ -36,7 +36,7 @@ app.post("/book",upload.single('image'), async(req,res)=>{
   if(!req.file){
     fileName = "https://imgs.search.brave.com/aYwPrU_5qxNl6pgyw4uaurvOMvlhXO3eUtXJ45EjVGA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/dmVjdG9yc3RvY2su/Y29tL2kvNTAwcC8x/NC8yMi9hbm9ueW1v/dXMtbWFsZS1hbmQt/ZmVtYWxlLXByb2Zp/bGUtcGljdHVyZS1l/bW90aW9uLXZlY3Rv/ci01MzUxNDIyLmpw/Zw";
   }else{
-    fileName = "http://localhost:3000/"+req.file.filename;
+    fileName = "https://mern2-0-basicnode-1.onrender.com/book/"+req.file.filename;
   }
 
 
@@ -99,7 +99,7 @@ app.delete("/book/:id",async(req,res)=>{
   const oldData = await Book.findById(id);
   
   const oldImageURL = oldData.imageURL;
-  const localHostImageURL = "http://localhost:3000/".length;
+  const localHostImageURL = "https://mern2-0-basicnode-1.onrender.com/book/".length;
   const newOldImageURL = oldImageURL.slice(localHostImageURL)
   fs.unlink(`storage/${newOldImageURL}`,(err)=>{
     if(err){
@@ -125,7 +125,7 @@ app.patch("/book/:id",upload.single('image'),async (req,res)=>{
   const oldData = await Book.findById(id);
   if(req.file){
     const oldImageURL = oldData.imageURL;
-    const localHostImageURL = "http://localhost:3000/".length;
+    const localHostImageURL = "https://mern2-0-basicnode-1.onrender.com/book/".length;
     const newOldImageURL = oldImageURL.slice(localHostImageURL)
     fs.unlink(`storage/${newOldImageURL}`,(err)=>{
       if(err){
@@ -146,7 +146,7 @@ app.patch("/book/:id",upload.single('image'),async (req,res)=>{
     authorName,
     publishedAt,
     publisher,
-    imageURL : "http://localhost:3000/" + fileName
+    imageURL : "https://mern2-0-basicnode-1.onrender.com/book/" + fileName
   });
   
   res.status(200).json({
