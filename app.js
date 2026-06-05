@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
+app.use(cors());
 
  
 const fs = require('fs');
@@ -15,10 +16,6 @@ const upload = multer({storage : storage});
 //const app = require("express")();
 
 app.use(express.json())
-app.use(cors({
-  origin : "https://mern-2-0-basic-react.vercel.app",
-  origin : "http://localhost:5173/"
-}));
 
 
 connectToDatabase();
